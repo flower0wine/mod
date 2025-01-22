@@ -2,6 +2,8 @@
 
 这是一个为Minecraft添加剑气效果的模组,让你体验到武侠世界中的剑气纵横!
 
+<p align="center"><img src="images/logo/1.webp" alt="" width="200"></p>
+
 ## ✨ 主要特性
 
 ### 🌟 剑气附魔
