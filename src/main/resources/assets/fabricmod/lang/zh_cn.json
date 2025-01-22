@@ -1,0 +1,5 @@
+{
+  "death.attack.sword_aura": "%1$s 被 %2$s 的剑气击杀",
+  "death.attack.sword_aura.item": "%1$s 被 %2$s 使用 %3$s 的剑气击杀",
+  "enchantment.fabricmod.sword_aura": "剑气"
+} 

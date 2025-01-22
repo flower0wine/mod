@@ -1,41 +1,39 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
-	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
+	"id": "fabricmod",
+	"version": "1.0.0",
+	"name": "Fabric Example Mod",
+	"description": "A simple example mod for Fabric.",
+	"authors": ["YourName"],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://example.com",
+		"sources": "https://github.com/example/fabricmod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/fabricmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.example.fabricmod.ExampleMod"
 		],
 		"client": [
 			"com.example.ExampleModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"fabricmod.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
-		"minecraft": "~1.21.4",
-		"java": ">=21",
-		"fabric-api": "*"
+		"fabricloader": ">=0.14.0",
+		"minecraft": ">=1.20.0",
+		"java": ">=17",
+		"fabric-resource-loader-v0": "*"
 	},
-	"suggests": {
-		"another-mod": "*"
+	"custom": {
+		"fabric-datagen": {
+			"dataPacks": [
+				"fabricmod:sword_aura"
+			]
+		}
 	}
 }

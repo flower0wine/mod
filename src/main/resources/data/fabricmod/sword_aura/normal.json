@@ -1,0 +1,40 @@
+{
+  "damage": {
+    "base_damage": 5.0,
+    "damage_multiplier": 3.0,
+    "damage_distance_multiplier": 0.8,
+    "sharpness_multiplier": 1.5
+  },
+  "movement": {
+    "max_distance": 10.0,
+    "distance_per_level": 5.0,
+    "move_speed": 2,
+    "speed_multiplier": 1
+  },
+  "shape": {
+    "arc_radius": 2.0,
+    "radius_per_level": 0.5,
+    "arc_angle": 1.885,
+    "arc_angle_per_level": 0.314,
+    "inner_radius_ratio": 0.7
+  },
+  "particle": {
+    "particle_count": 150,
+    "particles_per_level": 100,
+    "particle_scale": 0.2,
+    "particle_scale_per_level": 0,
+    "base_color": [0.5, 0.8, 1.0],
+    "level_colors": [
+      [0.5, 0.8, 1.0],
+      [0.8, 0.4, 1.0],
+      [1.0, 0.4, 0.4]
+    ]
+  },
+  "effect": {
+    "rotation_angle": 0.0,
+    "charge_time": 20,
+    "sound_pitch": 1.0,
+    "sound_volume": 1.0
+  },
+  "type": "fabricmod:sword_aura"
+} 

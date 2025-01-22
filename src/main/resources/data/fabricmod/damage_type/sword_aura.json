@@ -1,0 +1,9 @@
+{
+  "message_id": "death.attack.sword_aura",
+  "scaling": "when_caused_by_living_non_player",
+  "exhaustion": 0.1,
+  "effects": {
+    "sound": "minecraft:entity.player.attack.sweep",
+    "sound_category": "player"
+  }
+} 

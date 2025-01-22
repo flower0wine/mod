@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.example.fabricmod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["PlayerHoldMixin", "PlayerDisconnectMixin"],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
