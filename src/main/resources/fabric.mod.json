@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "fabricmod",
 	"version": "1.0.0",
-	"name": "Fabric Example Mod",
+	"name": "Sword Aura Mod",
 	"description": "A simple example mod for Fabric.",
 	"authors": ["YourName"],
 	"contact": {
@@ -17,16 +17,18 @@
 			"com.example.fabricmod.ExampleMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.example.fabricmod.ExampleModClient"
 		]
 	},
 	"mixins": [
-		"fabricmod.mixins.json"
+		"fabricmod.mixins.json",
+		"fabricmod.client.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.0",
 		"minecraft": ">=1.20.0",
 		"java": ">=17",
+		"fabric-api": "*",
 		"fabric-resource-loader-v0": "*"
 	},
 	"custom": {

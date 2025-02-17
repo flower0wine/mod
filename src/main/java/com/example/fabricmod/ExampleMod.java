@@ -1,19 +1,29 @@
 package com.example.fabricmod;
 
 import com.example.fabricmod.enchantments.SwordAuraEnchantment;
-import com.example.fabricmod.mixin.PlayerHoldMixin;
 import com.example.fabricmod.networking.ModPackets;
 import net.fabricmc.api.ModInitializer;
+
 import com.example.fabricmod.particle.SwordAuraParticleType;
 import com.example.fabricmod.player.PlayerHoldManager;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import com.example.fabricmod.effects.SwordAuraEffect;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.world.GameRules;
 import com.example.fabricmod.data.SwordAuraManager;
+import com.example.fabricmod.block.CustomBlock;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroups;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 
 public class ExampleMod implements ModInitializer {
+
+  // 创建方块实例
+  public static final CustomBlock SWORD_AURA_CRYSTAL = new CustomBlock();
 
   @Override
   public void onInitialize() {
@@ -36,5 +46,22 @@ public class ExampleMod implements ModInitializer {
                 });
             }
         );
+
+    // 注册方块
+    Registry.register(Registries.BLOCK, 
+        new Identifier("fabricmod", "sword_aura_crystal"), 
+        SWORD_AURA_CRYSTAL);
+    
+    // 注册方块物品
+    BlockItem blockItem = new BlockItem(SWORD_AURA_CRYSTAL, new FabricItemSettings());
+    Registry.register(Registries.ITEM, 
+        new Identifier("fabricmod", "sword_aura_crystal"),
+        blockItem);
+
+    // 将物品添加到创造模式物品栏
+    ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
+        content.add(SWORD_AURA_CRYSTAL);
+    });
+
   }
 }

@@ -1,8 +1,6 @@
 package com.example.fabricmod.player;
 
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import net.minecraft.item.SwordItem;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.registry.Registries;
@@ -13,11 +11,16 @@ import java.util.UUID;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.example.fabricmod.data.SwordAuraManager;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
+import java.util.Map;
 
 public class PlayerHoldManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger("SwordAuraMod");
     private static final HashMap<UUID, PlayerHoldState> playerStates = new HashMap<>();
     private static final int CROSS_AURA_TIME = 10; // 1.5秒
+    private static final Map<UUID, Long> holdStartTimes = new HashMap<>();
+    private static final Map<UUID, Boolean> chargingStates = new HashMap<>();
+    private static final float CHARGE_TIME = 20.0f; // 蓄力需要1秒 (20 ticks)
 
     private static class PlayerHoldState {
         boolean isHolding = false;
@@ -48,16 +51,17 @@ public class PlayerHoldManager {
         
         if (pressed && !state.isHolding) {
             state.isHolding = true;
-            LOGGER.info("开始蓄力");
+            holdStartTimes.put(playerId, System.currentTimeMillis());
+            chargingStates.put(playerId, true);
         } else if (!pressed && state.isHolding) {
             if (state.holdTime >= config.effect().chargeTime()) {
-                LOGGER.info("释放交叉剑气！等级: {}", level);
                 SwordAuraEffect.createCrossAura(player.getWorld(), player, level);
             } else if (state.holdTime > 1) {
-                LOGGER.info("释放普通剑气！等级: {}", level);
                 SwordAuraEffect.createAura(player.getWorld(), player, level);
             }
             resetHoldState(playerId);
+            holdStartTimes.remove(playerId);
+            chargingStates.put(playerId, false);
         }
     }
     
@@ -66,19 +70,41 @@ public class PlayerHoldManager {
         PlayerHoldState state = playerStates.get(playerId);
         if (state != null && state.isHolding) {
             state.holdTime++;
-            LOGGER.info("蓄力中... 时间: {} ticks", state.holdTime);
         }
     }
     
     private static void resetHoldState(UUID playerId) {
         PlayerHoldState state = playerStates.get(playerId);
         if (state != null && state.holdTime > 0) {
-            LOGGER.info("重置长按状态，最终时间: {} ticks", state.holdTime);
         }
         playerStates.remove(playerId);
     }
     
     public static void removePlayer(UUID playerId) {
         playerStates.remove(playerId);
+    }
+
+    public static boolean isCharging(PlayerEntity player) {
+        return chargingStates.getOrDefault(player.getUuid(), false);
+    }
+
+    public static float getChargeProgress(PlayerEntity player) {
+        UUID playerId = player.getUuid();
+        Long startTime = holdStartTimes.get(playerId);
+        if (startTime == null) return 0.0f;
+        
+        long currentTime = System.currentTimeMillis();
+        float elapsedTicks = (currentTime - startTime) / 50.0f; // 转换为游戏刻
+        return Math.min(elapsedTicks / CHARGE_TIME, 1.0f);
+    }
+
+    public static void clearPlayerData(UUID playerId) {
+        holdStartTimes.remove(playerId);
+        chargingStates.remove(playerId);
+    }
+
+    // 当玩家断开连接时清理数据
+    public static void onPlayerDisconnect(ServerPlayerEntity player) {
+        clearPlayerData(player.getUuid());
     }
 } 

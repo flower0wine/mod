@@ -1,4 +1,4 @@
-package com.example;
+package com.example.fabricmod;
 
 import com.example.fabricmod.particle.SwordAuraParticleFactory;
 import com.example.fabricmod.particle.SwordAuraParticleType;
@@ -11,12 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.World;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.network.PacketByteBuf;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 import com.example.fabricmod.client.MouseStateHandler;
 import com.example.fabricmod.effects.SwordAuraEffectClient;
@@ -27,7 +21,7 @@ public class ExampleModClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		LOGGER.info("初始化客户端粒子效果系统");
-		
+
 		// 注册粒子工厂
 		ParticleFactoryRegistry.getInstance()
 			.register(SwordAuraParticleType.SWORD_AURA, SwordAuraParticleFactory::new);
