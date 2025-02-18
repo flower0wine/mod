@@ -5,7 +5,8 @@
   "client": [
     "HeldItemRendererMixin",
     "VillagerEntityModelMixin",
-    "LightningEntityRendererMixin"
+    "LightningEntityRendererMixin",
+    "EntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

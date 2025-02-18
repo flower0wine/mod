@@ -7,5 +7,7 @@
   "item.fabricmod.sword_aura_crystal": "剑气结晶",
   "item.fabricmod.magic_wand": "魔法棒",
   "enchantment.fabricmod.thunder_mastery": "万雷",
-  "enchantment.fabricmod.thunder_mastery.desc": "增加魔法棒召唤的闪电数量"
+  "enchantment.fabricmod.thunder_mastery.desc": "增加魔法棒召唤的闪电数量",
+  "enchantment.fabricmod.anti_gravity": "反重力",
+  "enchantment.fabricmod.anti_gravity.desc": "使被攻击的生物重力颠倒"
 } 

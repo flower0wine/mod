@@ -3,11 +3,13 @@
   "package": "com.example.fabricmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "EntityAntiGravityMixin",
     "LightningEntityMixin",
     "PlayerDisconnectMixin",
     "PlayerHoldMixin",
     "SharpnessEnchantmentMixin",
-    "VillagerBehaviorMixin"
+    "VillagerBehaviorMixin",
+    "EntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
