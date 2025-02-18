@@ -2,6 +2,9 @@
   "block.fabricmod.sword_aura_crystal": "Sword Aura Crystal",
   "item.fabricmod.sword_aura_crystal": "Sword Aura Crystal",
   "enchantment.fabricmod.sword_aura": "Sword Aura",
-  "enchantment.fabricmod.sword_aura.desc": "Enables the sword to release sword aura. Higher levels increase the power"
+  "enchantment.fabricmod.sword_aura.desc": "Enables the sword to release sword aura. Higher levels increase the power",
+  "item.fabricmod.magic_wand": "Magic Wand",
+  "enchantment.fabricmod.thunder_mastery": "Thunder Mastery",
+  "enchantment.fabricmod.thunder_mastery.desc": "Increases the number of lightning bolts summoned by the magic wand"
 }
 

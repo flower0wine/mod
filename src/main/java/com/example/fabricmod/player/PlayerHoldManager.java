@@ -1,5 +1,6 @@
 package com.example.fabricmod.player;
 
+import com.example.fabricmod.enchantment.ModEnchantments;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -41,8 +42,8 @@ public class PlayerHoldManager {
             state.holdTime >= 20 ? "cross" : "normal"));
         
         int level = EnchantmentHelper.getEquipmentLevel(
-            Registries.ENCHANTMENT.get(SwordAuraEnchantment.SWORD_AURA.getValue()),
-            player);
+                ModEnchantments.SWORD_AURA,
+                player);
             
         if (level <= 0) {
             resetHoldState(playerId);

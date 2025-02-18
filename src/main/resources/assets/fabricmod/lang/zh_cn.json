@@ -4,5 +4,8 @@
   "enchantment.fabricmod.sword_aura": "剑气",
   "enchantment.fabricmod.sword_aura.desc": "使剑能够发出剑气，附魔等级越高剑气越强",
   "block.fabricmod.sword_aura_crystal": "剑气结晶",
-  "item.fabricmod.sword_aura_crystal": "剑气结晶"
+  "item.fabricmod.sword_aura_crystal": "剑气结晶",
+  "item.fabricmod.magic_wand": "魔法棒",
+  "enchantment.fabricmod.thunder_mastery": "万雷",
+  "enchantment.fabricmod.thunder_mastery.desc": "增加魔法棒召唤的闪电数量"
 } 

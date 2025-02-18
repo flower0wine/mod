@@ -1,5 +1,6 @@
 package com.example.fabricmod.mixin;
 
+import com.example.fabricmod.enchantment.ModEnchantments;
 import com.example.fabricmod.enchantments.SwordAuraEnchantment;
 import com.example.fabricmod.player.PlayerHoldManager;
 import net.minecraft.client.MinecraftClient;
@@ -58,7 +59,7 @@ public abstract class HeldItemRendererMixin {
             if (heldItem.getItem() instanceof SwordItem) {
                 // 获取剑气附魔等级
                 int auraLevel = EnchantmentHelper.getLevel(
-                    Registries.ENCHANTMENT.get(SwordAuraEnchantment.SWORD_AURA.getValue()),
+                    ModEnchantments.SWORD_AURA,
                     heldItem
                 );
                 
