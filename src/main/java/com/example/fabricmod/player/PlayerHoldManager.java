@@ -15,6 +15,7 @@ import com.example.fabricmod.data.SwordAuraManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import java.util.Map;
+import com.example.fabricmod.ExampleMod;
 
 public class PlayerHoldManager {
     private static final HashMap<UUID, PlayerHoldState> playerStates = new HashMap<>();
@@ -38,7 +39,7 @@ public class PlayerHoldManager {
         }
         
         Registry<SwordAuraManager.SwordAuraData> registry = player.getWorld().getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", 
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, 
             state.holdTime >= 20 ? "cross" : "normal"));
         
         int level = EnchantmentHelper.getEquipmentLevel(

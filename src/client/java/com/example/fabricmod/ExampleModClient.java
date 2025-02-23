@@ -1,32 +1,40 @@
 package com.example.fabricmod;
 
 import com.example.fabricmod.client.render.MagicWandRenderer;
+import com.example.fabricmod.entity.ModEntities;
 import com.example.fabricmod.particle.MagicWandParticles;
 import com.example.fabricmod.particle.SwordAuraParticleFactory;
 import com.example.fabricmod.particle.SwordAuraParticleType;
+import com.example.fabricmod.render.WeaponDisplayEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import com.example.fabricmod.ExampleMod;
 import com.example.fabricmod.client.MouseStateHandler;
 import com.example.fabricmod.effects.SwordAuraEffectClient;
 import com.example.fabricmod.item.MagicWandItem;
+import com.example.fabricmod.item.GamblerCardItem;
+import net.minecraft.sound.SoundEvents;
+import com.example.fabricmod.ExampleMod;
 
 public class ExampleModClient implements ClientModInitializer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleMod.MOD_ID);
 
 	@Override
 	public void onInitializeClient() {
+
+		// 注册物品展示实体渲染器
+		EntityRendererRegistry.register(ModEntities.WEAPON_DISPLAY, WeaponDisplayEntityRenderer::new);
+
 		// 注册粒子工厂
 		ParticleFactoryRegistry.getInstance()
 			.register(SwordAuraParticleType.SWORD_AURA, SwordAuraParticleFactory::new);
@@ -72,7 +80,7 @@ public class ExampleModClient implements ClientModInitializer {
 		});
 
 		ClientPlayNetworking.registerGlobalReceiver(
-			new Identifier("fabricmod", "sword_aura"),
+			new Identifier(ExampleMod.MOD_ID, "sword_aura"),
 			(client, handler, buf, responseSender) -> {
 				double x = buf.readDouble();
 				double y = buf.readDouble();
@@ -93,7 +101,7 @@ public class ExampleModClient implements ClientModInitializer {
 		);
 
 		ClientPlayNetworking.registerGlobalReceiver(
-            new Identifier("fabricmod", "sword_cross_aura"),
+            new Identifier(ExampleMod.MOD_ID, "sword_cross_aura"),
             (client, handler, buf, responseSender) -> {
                 double x = buf.readDouble();
                 double y = buf.readDouble();
@@ -120,6 +128,36 @@ public class ExampleModClient implements ClientModInitializer {
                 });
             }
         );
+
+		ClientPlayNetworking.registerGlobalReceiver(GamblerCardItem.GAMBLER_CARD_ANIMATION,
+			(client, handler, buf, responseSender) -> {
+				client.execute(() -> {
+					ClientPlayerEntity player = client.player;
+					if (player != null) {
+						// 获取玩家手中的魔法棒
+						ItemStack wand = player.getMainHandStack();
+						if (wand.getItem() instanceof GamblerCardItem) {
+							// 添加粒子效果
+							client.particleManager.addEmitter(player, ParticleTypes.TOTEM_OF_UNDYING, 30);
+							
+							// 添加音效
+							client.world.playSound(
+								player.getX(), 
+								player.getY(), 
+								player.getZ(), 
+								SoundEvents.ITEM_TOTEM_USE, 
+								player.getSoundCategory(), 
+								1.0F, 
+								1.0F, 
+								false
+							);
+
+							// 显示浮动物品
+							client.gameRenderer.showFloatingItem(wand);
+						}
+					}
+				});
+			});
 
 		MouseStateHandler.init();
 	}

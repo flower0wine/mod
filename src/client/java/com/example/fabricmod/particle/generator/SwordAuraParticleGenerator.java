@@ -7,6 +7,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import com.example.fabricmod.data.SwordAuraManager;
+import com.example.fabricmod.ExampleMod;
 
 import java.util.Random;
 
@@ -14,7 +15,7 @@ public class SwordAuraParticleGenerator {
     public static void generateAuraParticles(ClientWorld world, double centerX, double centerY, double centerZ,
                                              Vec3d direction, Vec3d right, int level, String configType, double scaleMultiplier) {
         Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", configType));
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, configType));
         
         // 月牙形状参数
         int baseParticleCount = (int)((config.particle().particleCount() + level * config.particle().particlesPerLevel()) * scaleMultiplier);

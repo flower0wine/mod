@@ -45,11 +45,12 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtElement;
+import com.example.fabricmod.ExampleMod;
 
 @Mixin(VillagerEntity.class)
 public abstract class VillagerBehaviorMixin extends MobEntity implements ThiefAccess {
     @Unique
-    private static final Logger LOGGER = LoggerFactory.getLogger("fabricmod");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleMod.MOD_ID);
     
     // 村民是否为小偷的状态标记，需要在客户端同步显示
     @Unique

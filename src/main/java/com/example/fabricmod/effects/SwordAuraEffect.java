@@ -29,11 +29,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
+import com.example.fabricmod.ExampleMod;
 
 public class SwordAuraEffect {
     private static final RegistryKey<DamageType> SWORD_AURA_DAMAGE = RegistryKey.of(
         RegistryKeys.DAMAGE_TYPE, 
-        new Identifier("fabricmod", "sword_aura")
+        new Identifier(ExampleMod.MOD_ID, "sword_aura")
     );
 
     private static final Map<UUID, SwordAuraTracker> activeAuras = new HashMap<>();
@@ -64,7 +65,7 @@ public class SwordAuraEffect {
                         Vec3d direction, Vec3d right, double radius, int level,
                         String configType, int sharpnessLevel) {
             Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-            SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", configType));
+            SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, configType));
                 
             double scaleMultiplier = 1.0 + (sharpnessLevel * 0.1);
             
@@ -84,7 +85,7 @@ public class SwordAuraEffect {
         
         boolean tick() {
             Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-            SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", configType));
+            SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, configType));
             
             double scaleMultiplier = 1.0 + (sharpnessLevel * 0.1);
                 
@@ -182,7 +183,7 @@ public class SwordAuraEffect {
         int sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, mainHand);
 
         Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", "normal"));
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, "normal"));
 
         // 根据锋利等级调整范围和大小
         double radiusMultiplier = 1.0 + (sharpnessLevel * 0.1); // 每级锋利增加10%范围
@@ -207,7 +208,7 @@ public class SwordAuraEffect {
         buf.writeDouble(scaleMultiplier);  // 添加缩放参数
         
         ServerPlayNetworking.send((ServerPlayerEntity) attacker, 
-            new Identifier("fabricmod", "sword_aura"), buf);
+            new Identifier(ExampleMod.MOD_ID, "sword_aura"), buf);
 
         // 添加剑气追踪器
         if (!world.isClient) {
@@ -234,7 +235,7 @@ public class SwordAuraEffect {
         int sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, mainHand);
         
         Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", "cross"));
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, "cross"));
 
         // 根据锋利等级调整范围和大小
         double radiusMultiplier = 1.0 + (sharpnessLevel * 0.1); // 每级锋利增加10%范围
@@ -263,7 +264,7 @@ public class SwordAuraEffect {
         buf.writeDouble(scaleMultiplier);  // 添加缩放参数
         
         ServerPlayNetworking.send((ServerPlayerEntity) attacker, 
-            new Identifier("fabricmod", "sword_cross_aura"), buf);
+            new Identifier(ExampleMod.MOD_ID, "sword_cross_aura"), buf);
 
         // 计算两个剑气的方向和对应的right向量
         Vec3d baseDirection = attacker.getRotationVector();

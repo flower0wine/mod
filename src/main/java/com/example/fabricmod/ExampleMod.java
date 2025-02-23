@@ -1,7 +1,9 @@
 package com.example.fabricmod;
 
+import com.example.fabricmod.effect.ModEffects;
 import com.example.fabricmod.enchantment.ModEnchantments;
 import com.example.fabricmod.enchantments.SwordAuraEnchantment;
+import com.example.fabricmod.item.GamblerCardItem;
 import com.example.fabricmod.networking.ModPackets;
 import net.fabricmc.api.ModInitializer;
 
@@ -22,16 +24,17 @@ import net.minecraft.item.ItemGroups;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import com.example.fabricmod.item.MagicWandItem;
 import com.example.fabricmod.enchantments.ThunderMasteryEnchantment;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.example.fabricmod.item.ModItems;
 
 public class ExampleMod implements ModInitializer {
 
     public static final String MOD_ID = "fabricmod";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     // 创建方块实例
     public static final CustomBlock SWORD_AURA_CRYSTAL = new CustomBlock();
-
-    // 创建物品实例
-    public static final MagicWandItem MAGIC_WAND = new MagicWandItem();
 
     @Override
     public void onInitialize() {
@@ -41,21 +44,18 @@ public class ExampleMod implements ModInitializer {
         // 注册附魔
         ModEnchantments.registerEnchantments();
         
+        // 注册物品
+        ModItems.registerItems();
+
+        // 注册数据包
+        ModPackets.registerC2SPackets();
+        
+        // 注册粒子
         SwordAuraParticleType.register();
 
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             SwordAuraEffect.tickAuras();
         });
-
-        ServerPlayNetworking.registerGlobalReceiver(
-                ModPackets.MOUSE_HOLD_STATE,
-                (server, player, handler, buf, responseSender) -> {
-                    boolean isPressed = buf.readBoolean();
-                    server.execute(() -> {
-                        PlayerHoldManager.handleMouseState(player, isPressed);
-                    });
-                }
-            );
 
         // 注册方块
         Registry.register(Registries.BLOCK, 
@@ -73,15 +73,7 @@ public class ExampleMod implements ModInitializer {
             content.add(SWORD_AURA_CRYSTAL);
         });
 
-        // 注册魔法棒
-        Registry.register(Registries.ITEM, 
-            new Identifier(MOD_ID, "magic_wand"), 
-            MAGIC_WAND);
-            
-        // 将魔法棒添加到创造模式物品栏
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
-            content.add(MAGIC_WAND);
-        });
-
+        // 注册效果
+        ModEffects.registerEffects();
     }
 }

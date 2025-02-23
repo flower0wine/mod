@@ -14,10 +14,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.example.fabricmod.access.ThiefAccess;
+import com.example.fabricmod.ExampleMod;
 
 @Mixin(VillagerResemblingModel.class)
 public class VillagerEntityModelMixin {
-    private static final Logger LOGGER = LoggerFactory.getLogger("fabricmod");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExampleMod.MOD_ID);
     
     @Shadow @Final private ModelPart head;
 

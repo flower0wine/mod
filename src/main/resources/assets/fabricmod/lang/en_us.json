@@ -7,6 +7,10 @@
   "enchantment.fabricmod.thunder_mastery": "Thunder Mastery",
   "enchantment.fabricmod.thunder_mastery.desc": "Increases the number of lightning bolts summoned by the magic wand",
   "enchantment.fabricmod.anti_gravity": "Anti Gravity",
-  "enchantment.fabricmod.anti_gravity.desc": "Reverses the gravity of attacked entities"
+  "enchantment.fabricmod.anti_gravity.desc": "Reverses the gravity of attacked entities",
+  "item.fabricmod.gambler_card": "Gambler Card",
+  "effect.fabricmod.gamblers_blessing": "Gambler's Blessing",
+  "advancement.fabricmod.go_brave_warrior.title": "Go! Brave Warrior!",
+  "advancement.fabricmod.go_brave_warrior.description": "Fate has opened the gate to The End for you"
 }
 

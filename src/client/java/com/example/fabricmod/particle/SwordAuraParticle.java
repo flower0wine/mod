@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import com.example.fabricmod.data.SwordAuraManager;
 import java.util.List;
+import com.example.fabricmod.ExampleMod;
 
 public class SwordAuraParticle extends SpriteBillboardParticle {
     private final SpriteProvider spriteProvider;
@@ -35,7 +36,7 @@ public class SwordAuraParticle extends SpriteBillboardParticle {
         this.distanceTraveled = 0;
 
         Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", configType));
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, configType));
         
         // 根据等级调整移动速度
         double adjustedSpeed = config.movement().moveSpeed() * (1 + level * config.movement().speedMultiplier());
@@ -72,7 +73,7 @@ public class SwordAuraParticle extends SpriteBillboardParticle {
         super(world, x, y, z, velocityX, velocityY, velocityZ);
         
         Registry<SwordAuraManager.SwordAuraData> registry = world.getRegistryManager().get(SwordAuraManager.SWORD_AURA_KEY);
-        SwordAuraManager.SwordAuraData config = registry.get(new Identifier("fabricmod", configType));
+        SwordAuraManager.SwordAuraData config = registry.get(new Identifier(ExampleMod.MOD_ID, configType));
         
         this.spriteProvider = spriteProvider;
         this.level = level;

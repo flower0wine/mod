@@ -9,5 +9,9 @@
   "enchantment.fabricmod.thunder_mastery": "万雷",
   "enchantment.fabricmod.thunder_mastery.desc": "增加魔法棒召唤的闪电数量",
   "enchantment.fabricmod.anti_gravity": "反重力",
-  "enchantment.fabricmod.anti_gravity.desc": "使被攻击的生物重力颠倒"
+  "enchantment.fabricmod.anti_gravity.desc": "使被攻击的生物重力颠倒",
+  "item.fabricmod.gambler_card": "赌神卡牌",
+  "effect.fabricmod.gamblers_blessing": "赌神注视",
+  "advancement.fabricmod.go_brave_warrior.title": "去吧！勇士！",
+  "advancement.fabricmod.go_brave_warrior.description": "命运已为你开启通往终末之地的大门"
 } 

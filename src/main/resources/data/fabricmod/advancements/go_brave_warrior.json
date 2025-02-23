@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:end_portal_frame"
+    },
+    "title": {
+      "translate": "advancement.fabricmod.go_brave_warrior.title"
+    },
+    "description": {
+      "translate": "advancement.fabricmod.go_brave_warrior.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got_gear": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -20,11 +20,12 @@ import net.minecraft.registry.SimpleRegistry;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.List;
+import com.example.fabricmod.ExampleMod;
 
 public class SwordAuraManager {
     private static final Gson GSON = new Gson();
     public static final RegistryKey<Registry<SwordAuraData>> SWORD_AURA_KEY = 
-        RegistryKey.ofRegistry(new Identifier("fabricmod", "sword_aura"));
+        RegistryKey.ofRegistry(new Identifier(ExampleMod.MOD_ID, "sword_aura"));
 
     public static final SwordAuraData NORMAL_CONFIG = new SwordAuraData(
         // 伤害配置
@@ -187,11 +188,11 @@ public class SwordAuraManager {
             
         // 注册默认值
         Registry.register(registry, 
-            new Identifier("fabricmod", "normal"), 
+            new Identifier(ExampleMod.MOD_ID, "normal"), 
             NORMAL_CONFIG);
             
         Registry.register(registry, 
-            new Identifier("fabricmod", "cross"), 
+            new Identifier(ExampleMod.MOD_ID, "cross"), 
             CROSS_CONFIG);
 
         // 注册资源重载监听器，只用于更新配置
@@ -199,13 +200,13 @@ public class SwordAuraManager {
             new SimpleSynchronousResourceReloadListener() {
                 @Override
                 public Identifier getFabricId() {
-                    return new Identifier("fabricmod", "sword_aura_loader");
+                    return new Identifier(ExampleMod.MOD_ID, "sword_aura_loader");
                 }
 
                 @Override
                 public void reload(ResourceManager manager) {
                     // 加载普通剑气配置
-                    manager.getResource(new Identifier("fabricmod", "sword_aura/normal.json"))
+                    manager.getResource(new Identifier(ExampleMod.MOD_ID, "sword_aura/normal.json"))
                         .ifPresent(resource -> {
                             try (InputStream stream = resource.getInputStream()) {
                                 JsonElement json = GSON.fromJson(
@@ -219,7 +220,7 @@ public class SwordAuraManager {
                                 
                                 // 更新注册表中的值
                                 if (registry instanceof SimpleRegistry) {
-                                    RegistryKey<SwordAuraData> key = RegistryKey.of(SWORD_AURA_KEY, new Identifier("fabricmod", "normal"));
+                                    RegistryKey<SwordAuraData> key = RegistryKey.of(SWORD_AURA_KEY, new Identifier(ExampleMod.MOD_ID, "normal"));
                                     ((SimpleRegistry<SwordAuraData>)registry).set(
                                         registry.getRawId(registry.get(key)),
                                         key,
@@ -233,7 +234,7 @@ public class SwordAuraManager {
                         });
 
                     // 加载交叉剑气配置
-                    manager.getResource(new Identifier("fabricmod", "sword_aura/cross.json"))
+                    manager.getResource(new Identifier(ExampleMod.MOD_ID, "sword_aura/cross.json"))
                         .ifPresent(resource -> {
                             try (InputStream stream = resource.getInputStream()) {
                                 JsonElement json = GSON.fromJson(
@@ -247,7 +248,7 @@ public class SwordAuraManager {
                                 
                                 // 更新注册表中的值
                                 if (registry instanceof SimpleRegistry) {
-                                    RegistryKey<SwordAuraData> key = RegistryKey.of(SWORD_AURA_KEY, new Identifier("fabricmod", "cross"));
+                                    RegistryKey<SwordAuraData> key = RegistryKey.of(SWORD_AURA_KEY, new Identifier(ExampleMod.MOD_ID, "cross"));
                                     ((SimpleRegistry<SwordAuraData>)registry).set(
                                         registry.getRawId(registry.get(key)),
                                         key,

@@ -5,6 +5,7 @@ import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import com.example.fabricmod.ExampleMod;
 
 public class SwordAuraParticleType extends ParticleType<SwordAuraParticleEffect> {
     public static final SwordAuraParticleType SWORD_AURA = new SwordAuraParticleType();
@@ -15,7 +16,7 @@ public class SwordAuraParticleType extends ParticleType<SwordAuraParticleEffect>
 
     public static void register() {
         Registry.register(Registries.PARTICLE_TYPE, 
-            new Identifier("fabricmod", "sword_aura"), SWORD_AURA);
+            new Identifier(ExampleMod.MOD_ID, "sword_aura"), SWORD_AURA);
     }
 
     @Override

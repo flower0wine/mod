@@ -1,15 +1,15 @@
 {
 	"schemaVersion": 1,
-	"id": "fabricmod",
+	"id": "flowerwine",
 	"version": "1.0.0",
 	"name": "Sword Aura Mod",
 	"description": "A simple example mod for Fabric.",
-	"authors": ["YourName"],
+	"authors": ["flowerwine"],
 	"contact": {
-		"homepage": "https://example.com",
-		"sources": "https://github.com/example/fabricmod"
+		"homepage": "https://flowerwine.xyz",
+		"sources": "https://github.com/flower0wine/mod"
 	},
-	"license": "MIT",
+	"license": "AGPL-3.0",
 	"icon": "assets/fabricmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
