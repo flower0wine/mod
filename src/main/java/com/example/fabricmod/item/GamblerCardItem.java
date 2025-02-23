@@ -26,7 +26,7 @@ public class GamblerCardItem extends Item {
     public static final Identifier GAMBLER_CARD_ANIMATION = new Identifier(MOD_ID, "gambler_card_animation");
 
     public GamblerCardItem() {
-        super(new FabricItemSettings().maxCount(1));
+        super(new FabricItemSettings().maxCount(64));
     }
 
     @Override

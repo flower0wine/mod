@@ -1,0 +1,92 @@
+{
+  "replace": false,
+  "trades": [
+    {
+      "type": "minecraft:librarian",
+      "profession_level": 3,
+      "trades": [
+        {
+          "price": {
+            "item": "minecraft:emerald",
+            "count": {
+              "min": 20,
+              "max": 35
+            }
+          },
+          "second_price": {
+            "item": "minecraft:book",
+            "count": 1
+          },
+          "result": {
+            "type": "enchanted_book",
+            "enchantments": [
+              {
+                "id": "fabricmod:sword_aura",
+                "level": {
+                  "min": 1,
+                  "max": 3
+                }
+              }
+            ]
+          },
+          "max_uses": 3,
+          "experience": 30
+        },
+        {
+          "price": {
+            "item": "minecraft:emerald",
+            "count": {
+              "min": 25,
+              "max": 40
+            }
+          },
+          "second_price": {
+            "item": "minecraft:book",
+            "count": 1
+          },
+          "result": {
+            "type": "enchanted_book",
+            "enchantments": [
+              {
+                "id": "fabricmod:anti_gravity",
+                "level": {
+                  "min": 1,
+                  "max": 3
+                }
+              }
+            ]
+          },
+          "max_uses": 3,
+          "experience": 30
+        },
+        {
+          "price": {
+            "item": "minecraft:emerald",
+            "count": {
+              "min": 30,
+              "max": 45
+            }
+          },
+          "second_price": {
+            "item": "minecraft:book",
+            "count": 1
+          },
+          "result": {
+            "type": "enchanted_book",
+            "enchantments": [
+              {
+                "id": "fabricmod:thunder_mastery",
+                "level": {
+                  "min": 1,
+                  "max": 5
+                }
+              }
+            ]
+          },
+          "max_uses": 3,
+          "experience": 30
+        }
+      ]
+    }
+  ]
+} 
