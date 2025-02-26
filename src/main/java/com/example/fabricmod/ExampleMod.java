@@ -2,18 +2,12 @@ package com.example.fabricmod;
 
 import com.example.fabricmod.effect.ModEffects;
 import com.example.fabricmod.enchantment.ModEnchantments;
-import com.example.fabricmod.enchantments.SwordAuraEnchantment;
-import com.example.fabricmod.item.GamblerCardItem;
 import com.example.fabricmod.networking.ModPackets;
 import net.fabricmc.api.ModInitializer;
-
 import com.example.fabricmod.particle.SwordAuraParticleType;
-import com.example.fabricmod.player.PlayerHoldManager;
-
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import com.example.fabricmod.effects.SwordAuraEffect;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import com.example.fabricmod.data.SwordAuraManager;
 import com.example.fabricmod.block.CustomBlock;
 import net.minecraft.registry.Registries;
@@ -22,8 +16,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import com.example.fabricmod.item.MagicWandItem;
-import com.example.fabricmod.enchantments.ThunderMasteryEnchantment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.fabricmod.item.ModItems;

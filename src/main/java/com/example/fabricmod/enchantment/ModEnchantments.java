@@ -13,6 +13,7 @@ public class ModEnchantments {
     public static Enchantment THUNDER_MASTERY;
     public static Enchantment SWORD_AURA;
     public static Enchantment ANTI_GRAVITY;
+    public static Enchantment VOICE_CONTROL;
 
     public static void registerEnchantments() {
         THUNDER_MASTERY = Registry.register(
@@ -31,6 +32,12 @@ public class ModEnchantments {
             Registries.ENCHANTMENT,
             new Identifier(ExampleMod.MOD_ID, "anti_gravity"),
             new AntiGravityEnchantment()
+        );
+
+        VOICE_CONTROL = Registry.register(
+            Registries.ENCHANTMENT,
+            new Identifier(ExampleMod.MOD_ID, "voice_control"),
+            new VoiceControlEnchantment()
         );
     }
 } 

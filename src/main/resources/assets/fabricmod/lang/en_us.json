@@ -1,4 +1,6 @@
 {
+  "death.attack.sword_aura": "%1$s was slain by %2$s's sword aura",
+  "death.attack.sword_aura.item": "%1$s was slain by %2$s's sword aura using %3$s",
   "block.fabricmod.sword_aura_crystal": "Sword Aura Crystal",
   "item.fabricmod.sword_aura_crystal": "Sword Aura Crystal",
   "enchantment.fabricmod.sword_aura": "Sword Aura",
@@ -11,6 +13,13 @@
   "item.fabricmod.gambler_card": "Gambler Card",
   "effect.fabricmod.gamblers_blessing": "Gambler's Blessing",
   "advancement.fabricmod.go_brave_warrior.title": "Go! Brave Warrior!",
-  "advancement.fabricmod.go_brave_warrior.description": "Fate has opened the gate to The End for you"
+  "advancement.fabricmod.go_brave_warrior.description": "Fate has opened the gate to The End for you",
+  "enchantment.fabricmod.voice_control": "Voice Control",
+  "enchantment.fabricmod.voice_control.desc": "Control jump height with your voice",
+  "gui.fabricmod.audio_device.title": "Select Audio Input Device",
+  "key.fabricmod.audio_device": "Switch Audio Device",
+  "category.fabricmod.main": "Voice Control Boots",
+  "item.fabricmod.voice_control_boots.tooltip": "Hover and press %s to switch audio device",
+  "message.fabricmod.audio_device.hint": "Hover over boots and press %s to switch audio input device",
+  "gui.fabricmod.sensitivity": "Sensitivity: %s"
 }
-

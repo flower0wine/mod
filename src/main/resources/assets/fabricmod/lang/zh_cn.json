@@ -13,5 +13,13 @@
   "item.fabricmod.gambler_card": "赌神卡牌",
   "effect.fabricmod.gamblers_blessing": "赌神注视",
   "advancement.fabricmod.go_brave_warrior.title": "去吧！勇士！",
-  "advancement.fabricmod.go_brave_warrior.description": "命运已为你开启通往终末之地的大门"
+  "advancement.fabricmod.go_brave_warrior.description": "命运已为你开启通往终末之地的大门",
+  "enchantment.fabricmod.voice_control": "声控",
+  "enchantment.fabricmod.voice_control.desc": "使用声音控制跳跃高度",
+  "gui.fabricmod.audio_device.title": "选择音频输入设备",
+  "key.fabricmod.audio_device": "切换音频设备",
+  "category.fabricmod.main": "声控靴子",
+  "item.fabricmod.voice_control_boots.tooltip": "悬浮并按 %s 以切换音频设备",
+  "message.fabricmod.audio_device.hint": "鼠标悬浮在靴子上并按下 %s 键可以切换音频输入设备",
+  "gui.fabricmod.sensitivity": "敏感度: %s"
 } 

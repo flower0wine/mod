@@ -6,7 +6,12 @@
     "HeldItemRendererMixin",
     "VillagerEntityModelMixin",
     "LightningEntityRendererMixin",
-    "EntityRendererMixin"
+    "LivingEntityRendererMixin",
+    "GameRendererMixin",
+    "MouseHandlerMixin",
+    "KeyboardInputMixin",
+    "JumpControlMixin",
+    "HandledScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

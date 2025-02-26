@@ -8,8 +8,7 @@
     "PlayerDisconnectMixin",
     "PlayerHoldMixin",
     "SharpnessEnchantmentMixin",
-    "VillagerBehaviorMixin",
-    "EntityMixin"
+    "VillagerBehaviorMixin"
   ],
   "injectors": {
     "defaultRequire": 1
