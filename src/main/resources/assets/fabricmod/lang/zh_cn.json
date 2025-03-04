@@ -21,5 +21,18 @@
   "category.fabricmod.main": "声控靴子",
   "item.fabricmod.voice_control_boots.tooltip": "悬浮并按 %s 以切换音频设备",
   "message.fabricmod.audio_device.hint": "鼠标悬浮在靴子上并按下 %s 键可以切换音频输入设备",
-  "gui.fabricmod.sensitivity": "敏感度: %s"
+  "gui.fabricmod.sensitivity": "敏感度: %s",
+  "item.fabricmod.quantum_entanglement": "量子纠缠器",
+  "item.fabricmod.quantum_entanglement.mode.transmitter": "传递者模式",
+  "item.fabricmod.quantum_entanglement.mode.receiver": "接收者模式",
+  "item.fabricmod.quantum_entanglement.select.transmitter": "已选择 %s 作为传递者",
+  "item.fabricmod.quantum_entanglement.select.receiver": "已选择 %s 作为接收者",
+  "item.fabricmod.quantum_entanglement.error.no_data": "没有找到量子纠缠数据",
+  "item.fabricmod.quantum_entanglement.error.self": "不能选择自己",
+  "item.fabricmod.quantum_entanglement.tooltip": "右键实体进行绑定",
+  "item.fabricmod.quantum_entanglement.tooltip.shift": "Shift+右键切换模式",
+  "item.fabricmod.golden_quantum_entanglement": "量子纠缠器（传说级）",
+  "item.fabricmod.golden_quantum_entanglement.tooltip": "将伤害等额分配给所有接收者，并召唤闪电",
+  "item.fabricmod.mythical_quantum_entanglement": "量子纠缠器（神话级）",
+  "item.fabricmod.mythical_quantum_entanglement.tooltip": "将伤害等额分配给所有的接收者，并召唤闪电，同时召唤陨石"
 } 

@@ -4,11 +4,13 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityAntiGravityMixin",
+    "EntityDamageMixin",
     "LightningEntityMixin",
     "PlayerDisconnectMixin",
     "PlayerHoldMixin",
     "SharpnessEnchantmentMixin",
-    "VillagerBehaviorMixin"
+    "VillagerBehaviorMixin",
+    "EntityDeathMixin"
   ],
   "injectors": {
     "defaultRequire": 1

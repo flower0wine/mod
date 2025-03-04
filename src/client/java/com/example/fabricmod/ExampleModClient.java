@@ -6,9 +6,7 @@ import com.example.fabricmod.audio.AudioVisualizer;
 import com.example.fabricmod.client.render.MagicWandRenderer;
 import com.example.fabricmod.entity.ModEntities;
 import com.example.fabricmod.keybinding.KeyBindings;
-import com.example.fabricmod.particle.MagicWandParticles;
-import com.example.fabricmod.particle.SwordAuraParticleFactory;
-import com.example.fabricmod.particle.SwordAuraParticleType;
+import com.example.fabricmod.particle.*;
 import com.example.fabricmod.render.WeaponDisplayEntityRenderer;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ClientModInitializer;
@@ -32,7 +30,8 @@ import com.example.fabricmod.item.MagicWandItem;
 import com.example.fabricmod.item.GamblerCardItem;
 import net.minecraft.sound.SoundEvents;
 import com.example.fabricmod.audio.VoiceJumpController;
-import com.example.fabricmod.audio.AudioVisualizer;
+import com.example.fabricmod.render.MeteorEntityRenderer;
+import com.example.fabricmod.particle.*;
 
 import java.util.List;
 
@@ -45,6 +44,7 @@ public class ExampleModClient implements ClientModInitializer {
 
 		// 注册物品展示实体渲染器
 		EntityRendererRegistry.register(ModEntities.WEAPON_DISPLAY, WeaponDisplayEntityRenderer::new);
+		EntityRendererRegistry.register(ModEntities.METEOR, MeteorEntityRenderer::new);
 
 		// 注册粒子工厂
 		ParticleFactoryRegistry.getInstance()
@@ -104,6 +104,21 @@ public class ExampleModClient implements ClientModInitializer {
 				});
 			}
 		);
+
+		// 注册陨石撞击效果处理器
+        ClientPlayNetworking.registerGlobalReceiver(
+            new Identifier("fabricmod", "meteor_impact"),
+            (client, handler, buf, responseSender) -> {
+                double x = buf.readDouble();
+                double y = buf.readDouble();
+                double z = buf.readDouble();
+                
+                // 在主线程执行粒子效果
+                client.execute(() -> {
+                    MeteorImpactHandler.createImpactWave(client.world, x, y, z);
+                });
+            }
+        );
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player != null && client.player.isOnGround() && 

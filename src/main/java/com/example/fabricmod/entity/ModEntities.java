@@ -19,4 +19,13 @@ public class ModEntities {
             .trackedUpdateRate(1)
             .build()
     );
+
+    public static final EntityType<MeteorEntity> METEOR = Registry.register(
+        Registries.ENTITY_TYPE,
+        new Identifier(ExampleMod.MOD_ID, "meteor"),
+        FabricEntityTypeBuilder.<MeteorEntity>create(SpawnGroup.MISC, MeteorEntity::new)
+            .dimensions(EntityDimensions.fixed(1.0f, 1.0f))
+            .trackedUpdateRate(1)
+            .build()
+    );
 }

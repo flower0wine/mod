@@ -90,8 +90,8 @@ public class WeaponDisplayEntity extends Entity {
                 }
             }
             
-            // 5秒后消失
-            if (this.age >= 100000) {
+            // 20 秒后消失
+            if (this.age >= 400) {
                 this.discard();
             }
         }

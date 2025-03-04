@@ -21,5 +21,19 @@
   "category.fabricmod.main": "Voice Control Boots",
   "item.fabricmod.voice_control_boots.tooltip": "Hover and press %s to switch audio device",
   "message.fabricmod.audio_device.hint": "Hover over boots and press %s to switch audio input device",
-  "gui.fabricmod.sensitivity": "Sensitivity: %s"
+  "gui.fabricmod.sensitivity": "Sensitivity: %s",
+  "item.fabricmod.quantum_entanglement": "Quantum Entangler",
+  "item.fabricmod.quantum_entanglement.mode.transmitter": "Transmitter Mode",
+  "item.fabricmod.quantum_entanglement.mode.receiver": "Receiver Mode",
+  "item.fabricmod.quantum_entanglement.select.transmitter": "Selected %s as transmitter",
+  "item.fabricmod.quantum_entanglement.select.receiver": "Selected %s as receiver",
+  "item.fabricmod.quantum_entanglement.error.no_data": "No quantum entanglement data found",
+  "item.fabricmod.quantum_entanglement.error.self": "Cannot select self",
+  "item.fabricmod.quantum_entanglement.tooltip": "Right click on entity to bind",
+  "item.fabricmod.quantum_entanglement.tooltip.shift": "Shift+Right click to switch mode",
+  "item.fabricmod.golden_quantum_entanglement": "Quantum Entangler (Legendary)",
+  "item.fabricmod.golden_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning",
+  "item.fabricmod.mythical_quantum_entanglement": "Quantum Entangler (Mythical)",
+  "item.fabricmod.mythical_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning, and summons meteor"
 }
+
