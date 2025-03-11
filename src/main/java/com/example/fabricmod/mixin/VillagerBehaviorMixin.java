@@ -180,14 +180,16 @@ public abstract class VillagerBehaviorMixin extends MobEntity implements ThiefAc
         modData.putInt(THEFT_COOLDOWN_KEY, theftCooldown);
         modData.putInt(THEFT_LEVEL_KEY, theftLevel);
 
-        // 保存偷取的物品列表
-        NbtList itemsList = new NbtList();
-        for (ItemStack item : stolenItems) {
-            NbtCompound itemData = new NbtCompound();
-            item.writeNbt(itemData);
-            itemsList.add(itemData);
+        if (stolenItems != null) {
+            // 保存偷取的物品列表
+            NbtList itemsList = new NbtList();
+            for (ItemStack item : stolenItems) {
+                NbtCompound itemData = new NbtCompound();
+                item.writeNbt(itemData);
+                itemsList.add(itemData);
+            }
+            modData.put(STOLEN_ITEMS_KEY, itemsList);
         }
-        modData.put(STOLEN_ITEMS_KEY, itemsList);
 
         nbt.put(MOD_DATA_KEY, modData);
     }
