@@ -3,6 +3,7 @@ package com.example.fabricmod;
 import com.example.fabricmod.effect.ModEffects;
 import com.example.fabricmod.enchantment.ModEnchantments;
 import com.example.fabricmod.networking.ModPackets;
+import com.example.fabricmod.registry.ModBlockEntities;
 import net.fabricmc.api.ModInitializer;
 import com.example.fabricmod.particle.SwordAuraParticleType;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -19,14 +20,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.fabricmod.item.ModItems;
+import com.example.fabricmod.registry.ModBlocks;
 
 public class ExampleMod implements ModInitializer {
 
     public static final String MOD_ID = "fabricmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-    // 创建方块实例
-    public static final CustomBlock SWORD_AURA_CRYSTAL = new CustomBlock();
 
     @Override
     public void onInitialize() {
@@ -45,24 +44,14 @@ public class ExampleMod implements ModInitializer {
         // 注册粒子
         SwordAuraParticleType.register();
 
+        // 注册方块
+        ModBlocks.register();
+
+        // 注册方块实体
+        ModBlockEntities.registerBlockEntities();
+
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             SwordAuraEffect.tickAuras();
-        });
-
-        // 注册方块
-        Registry.register(Registries.BLOCK, 
-            new Identifier(MOD_ID, "sword_aura_crystal"), 
-            SWORD_AURA_CRYSTAL);
-        
-        // 注册方块物品
-        BlockItem blockItem = new BlockItem(SWORD_AURA_CRYSTAL, new FabricItemSettings());
-        Registry.register(Registries.ITEM, 
-            new Identifier(MOD_ID, "sword_aura_crystal"),
-            blockItem);
-
-        // 将物品添加到创造模式物品栏
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
-            content.add(SWORD_AURA_CRYSTAL);
         });
 
         // 注册效果

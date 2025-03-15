@@ -32,6 +32,8 @@ import net.minecraft.sound.SoundEvents;
 import com.example.fabricmod.audio.VoiceJumpController;
 import com.example.fabricmod.render.MeteorEntityRenderer;
 import com.example.fabricmod.particle.*;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import com.example.fabricmod.registry.ModBlockEntities;
 
 import java.util.List;
 
@@ -224,5 +226,6 @@ public class ExampleModClient implements ClientModInitializer {
 		MouseStateHandler.init();
 		VoiceJumpController.init();
 		AudioVisualizer.init();
+
 	}
 }
