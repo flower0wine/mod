@@ -22,13 +22,27 @@ repositories {
 //	maven {
 //		url 'https://repository.hanbings.io/proxy'
 //	}
+	// 添加阿里云镜像源
 	maven {
-			name = 'GeckoLib'
-			url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-			content {
-					includeGroupByRegex("software\\.bernie.*")
-					includeGroup("com.eliotlash.mclib")
-			}
+		name = "Aliyun"
+		url = 'https://maven.aliyun.com/repository/public'
+		allowInsecureProtocol = true
+	}
+
+	// 添加华为云镜像源
+	maven {
+		name = "Huawei"
+		url = 'https://repo.huaweicloud.com/repository/maven/'
+		allowInsecureProtocol = true
+	}
+
+	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+				includeGroupByRegex("software\\.bernie.*")
+				includeGroup("com.eliotlash.mclib")
+		}
 	}
 
 	maven { url 'https://www.jitpack.io' }
@@ -52,24 +66,33 @@ loom {
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	// Minecraft 和 Fabric 依赖
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    // GeckoLib
+    modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+    include "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+    
+    // MCLib
+    modImplementation "com.eliotlash.mclib:mclib:20"
+    include "com.eliotlash.mclib:mclib:20"
 
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
-	implementation("com.eliotlash.mclib:mclib:20")
+    // ParticleLib
+    modImplementation 'com.github.602723113:ParticleLib:1.5.0'
+    include 'com.github.602723113:ParticleLib:1.5.0'
 
-	implementation 'com.github.602723113:ParticleLib:1.5.0'
-	implementation 'com.github.wendykierp:JTransforms:3.1'
-	implementation 'be.tarsos.dsp:core:2.5'
-    implementation 'be.tarsos.dsp:jvm:2.5'
+    // JTransforms
+    modImplementation 'com.github.wendykierp:JTransforms:3.1'
+    include 'com.github.wendykierp:JTransforms:3.1'
 
-	modImplementation "software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.1"
-
+    // TarsosDSP
+    modImplementation 'be.tarsos.dsp:core:2.5'
+    include 'be.tarsos.dsp:core:2.5'
+    modImplementation 'be.tarsos.dsp:jvm:2.5'
+    include 'be.tarsos.dsp:jvm:2.5'
 }
 
 processResources {

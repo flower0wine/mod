@@ -34,5 +34,7 @@
   "item.fabricmod.golden_quantum_entanglement": "Quantum Entangler (Legendary)",
   "item.fabricmod.golden_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning",
   "item.fabricmod.mythical_quantum_entanglement": "Quantum Entangler (Mythical)",
-  "item.fabricmod.mythical_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning, and summons meteor"
+  "item.fabricmod.mythical_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning, and summons meteor",
+  "block.fabricmod.mirror": "Mirror",
+  "item.fabricmod.mirror": "Mirror"
 }

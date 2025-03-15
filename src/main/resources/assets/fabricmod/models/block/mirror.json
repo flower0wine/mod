@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "fabricmod:block/mirror_frame",
+    "north": "fabricmod:block/mirror_surface",
+    "south": "fabricmod:block/mirror_frame",
+    "east": "fabricmod:block/mirror_frame",
+    "west": "fabricmod:block/mirror_frame",
+    "up": "fabricmod:block/mirror_frame",
+    "down": "fabricmod:block/mirror_frame"
+  }
+}

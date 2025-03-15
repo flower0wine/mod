@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "fabricmod:block/mirror" },
+    "facing=east": { "model": "fabricmod:block/mirror", "y": 90 },
+    "facing=south": { "model": "fabricmod:block/mirror", "y": 180 },
+    "facing=west": { "model": "fabricmod:block/mirror", "y": 270 }
+  }
+}

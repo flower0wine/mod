@@ -1,9 +1,7 @@
 package com.example.fabricmod.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.AbstractBlock.Settings;
 
 public class CustomBlock extends Block {
     public CustomBlock() {

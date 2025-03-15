@@ -10,7 +10,8 @@
     "PlayerHoldMixin",
     "SharpnessEnchantmentMixin",
     "VillagerBehaviorMixin",
-    "EntityDeathMixin"
+    "EntityDeathMixin",
+    "ItemEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

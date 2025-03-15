@@ -7,20 +7,14 @@ import com.example.fabricmod.registry.ModBlockEntities;
 import net.fabricmc.api.ModInitializer;
 import com.example.fabricmod.particle.SwordAuraParticleType;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import com.example.fabricmod.effects.SwordAuraEffect;
 import com.example.fabricmod.data.SwordAuraManager;
-import com.example.fabricmod.block.CustomBlock;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroups;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.example.fabricmod.item.ModItems;
 import com.example.fabricmod.registry.ModBlocks;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import com.example.fabricmod.command.DropMultiplierCommand;
 
 public class ExampleMod implements ModInitializer {
 
@@ -56,5 +50,10 @@ public class ExampleMod implements ModInitializer {
 
         // 注册效果
         ModEffects.registerEffects();
+
+        // 注册命令
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            DropMultiplierCommand.register(dispatcher);
+        });
     }
 }
