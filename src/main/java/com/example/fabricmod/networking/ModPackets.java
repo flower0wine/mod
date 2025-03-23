@@ -8,6 +8,7 @@ import com.example.fabricmod.ExampleMod;
 
 public class ModPackets {
     public static final Identifier MOUSE_HOLD_STATE = new Identifier(ExampleMod.MOD_ID, "mouse_hold_state");
+    public static final Identifier MYSTERIOUS_BOX_EJECT = new Identifier(ExampleMod.MOD_ID, "mysterious_box_eject");
 
     public static void registerC2SPackets() {
         // 现有的鼠标状态处理

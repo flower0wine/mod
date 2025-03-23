@@ -21,6 +21,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
@@ -31,9 +32,9 @@ import com.example.fabricmod.item.GamblerCardItem;
 import net.minecraft.sound.SoundEvents;
 import com.example.fabricmod.audio.VoiceJumpController;
 import com.example.fabricmod.render.MeteorEntityRenderer;
-import com.example.fabricmod.particle.*;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import com.example.fabricmod.registry.ModBlockEntities;
+import com.example.fabricmod.networking.ModPackets;
+import net.minecraft.client.world.ClientWorld;
+import com.example.fabricmod.client.particle.MysteriousBoxParticles;
 
 import java.util.List;
 
@@ -227,5 +228,21 @@ public class ExampleModClient implements ClientModInitializer {
 		VoiceJumpController.init();
 		AudioVisualizer.init();
 
+		ClientPlayNetworking.registerGlobalReceiver(ModPackets.MYSTERIOUS_BOX_EJECT, (client, handler, buf, responseSender) -> {
+			BlockPos pos = buf.readBlockPos();
+			int itemCount = buf.readInt();
+			client.execute(() -> {
+				ClientWorld world = client.world;
+				if (world != null) {
+					MysteriousBoxParticles.spawnEjectParticles(
+						world,
+						pos.getX() + 0.5,
+						pos.getY() + 1.2,
+						pos.getZ() + 0.5,
+						itemCount
+					);
+				}
+			});
+		});
 	}
 }
