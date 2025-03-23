@@ -2,13 +2,17 @@ package com.example.fabricmod.mixin;
 
 import com.example.fabricmod.audio.AudioDevice;
 import com.example.fabricmod.audio.TarsosAudioProcessor;
+import com.example.fabricmod.block.MysteriousBoxBlock;
 import com.example.fabricmod.enchantment.ModEnchantments;
 import com.example.fabricmod.gui.AudioDeviceScreen;
+import com.example.fabricmod.gui.MysteriousBoxScreen;
 import com.example.fabricmod.keybinding.KeyBindings;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.slot.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -43,6 +47,23 @@ public abstract class HandledScreenMixin {
                 if (EnchantmentHelper.getLevel(ModEnchantments.VOICE_CONTROL, hoveredItem) > 0) {
                     List<AudioDevice> devices = TarsosAudioProcessor.getAvailableInputs();
                     client.setScreen(new AudioDeviceScreen(hoveredItem, devices));
+                    cir.setReturnValue(true);
+                } else if (hoveredItem.getItem() instanceof BlockItem blockItem &&
+                    blockItem.getBlock() instanceof MysteriousBoxBlock) {
+                    
+                    // 从NBT中读取配置
+                    NbtCompound nbt = hoveredItem.getOrCreateNbt();
+                    int interval = nbt.contains("ejectInterval") ? 
+                        nbt.getInt("ejectInterval") : 600; // 默认30秒
+                    boolean canBeDestroyed = !nbt.contains("canBeDestroyed") || 
+                        nbt.getBoolean("canBeDestroyed"); // 默认true
+                    
+                    // 打开配置界面
+                    client.setScreen(new MysteriousBoxScreen(
+                        hoveredItem,
+                        interval,
+                        canBeDestroyed
+                    ));
                     cir.setReturnValue(true);
                 }
             }

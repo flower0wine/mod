@@ -16,26 +16,42 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.nbt.NbtCompound;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MysteriousBoxBlockEntity extends BlockEntity {
     private int tickCounter = 0;
-    private static final int EJECT_INTERVAL = 600; // 30秒 = 20tick/s * 30s
+    private int ejectInterval = 600; // 默认30秒
+    private boolean canBeDestroyed = true; // 默认可被破坏
     private static final Random RANDOM = Random.create();
-    private static final int MIN_ITEMS = 5; // 最少喷射物品数量
-    private static final int MAX_ITEMS = 10; // 最多喷射物品数量
+    private static final int MIN_ITEMS = 10; // 最少喷射物品数量
+    private static final int MAX_ITEMS = 30; // 最多喷射物品数量
     
     public MysteriousBoxBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MYSTERIOUS_BOX_ENTITY, pos, state);
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("ejectInterval", ejectInterval);
+        nbt.putBoolean("canBeDestroyed", canBeDestroyed);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        ejectInterval = nbt.getInt("ejectInterval");
+        canBeDestroyed = nbt.getBoolean("canBeDestroyed");
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, MysteriousBoxBlockEntity blockEntity) {
         if (world.isClient) return;
         
         blockEntity.tickCounter++;
-        if (blockEntity.tickCounter >= EJECT_INTERVAL) {
+        if (blockEntity.tickCounter >= blockEntity.ejectInterval) {
             blockEntity.tickCounter = 0;
             blockEntity.ejectItems();
         }
@@ -89,5 +105,24 @@ public class MysteriousBoxBlockEntity extends BlockEntity {
             // 生成物品实体
             world.spawnEntity(itemEntity);
         }
+    }
+
+    // Getter和Setter方法
+    public int getEjectInterval() {
+        return ejectInterval;
+    }
+
+    public void setEjectInterval(int interval) {
+        this.ejectInterval = interval;
+        markDirty();
+    }
+
+    public boolean canBeDestroyed() {
+        return canBeDestroyed;
+    }
+
+    public void setCanBeDestroyed(boolean canBeDestroyed) {
+        this.canBeDestroyed = canBeDestroyed;
+        markDirty();
     }
 } 

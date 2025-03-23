@@ -37,5 +37,9 @@
   "item.fabricmod.mythical_quantum_entanglement.tooltip": "Distributes damage equally among all receivers and summons lightning, and summons meteor",
   "block.fabricmod.mirror": "Mirror",
   "item.fabricmod.mirror": "Mirror",
-  "block.fabricmod.mysterious_box": "Mysterious Box"
+  "block.fabricmod.mysterious_box": "Mysterious Box",
+  "screen.fabricmod.mysterious_box": "Mysterious Box Configuration",
+  "screen.fabricmod.interval": "Eject Interval (seconds)",
+  "screen.fabricmod.destroyable.true": "Destroyable",
+  "screen.fabricmod.destroyable.false": "Undestroyable"
 }

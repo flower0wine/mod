@@ -6,11 +6,16 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class MysteriousBoxBlock extends BlockWithEntity {
     // 创建自定义的碰撞箱形状
@@ -61,5 +66,40 @@ public class MysteriousBoxBlock extends BlockWithEntity {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.MYSTERIOUS_BOX_ENTITY, MysteriousBoxBlockEntity::tick);
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        
+        if (world.getBlockEntity(pos) instanceof MysteriousBoxBlockEntity blockEntity) {
+            // 从物品NBT中读取配置
+            NbtCompound nbt = itemStack.getNbt();
+            if (nbt != null) {
+                if (nbt.contains("ejectInterval")) {
+                    blockEntity.setEjectInterval(nbt.getInt("ejectInterval"));
+                }
+                if (nbt.contains("canBeDestroyed")) {
+                    blockEntity.setCanBeDestroyed(nbt.getBoolean("canBeDestroyed"));
+                }
+            }
+            blockEntity.markDirty();
+        }
+    }
+
+    @Override
+    public float getBlastResistance() {
+        return 3600000.0F; // 与基岩相同的爆炸抗性
+    }
+
+    @Override
+    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof MysteriousBoxBlockEntity mysteriousBox) {
+            if (!mysteriousBox.canBeDestroyed() && !player.isCreative()) {
+                return 0.0f; // 不可破坏
+            }
+        }
+        return super.calcBlockBreakingDelta(state, player, world, pos);
     }
 } 

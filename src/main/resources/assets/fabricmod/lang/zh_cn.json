@@ -37,5 +37,9 @@
   "item.fabricmod.mythical_quantum_entanglement.tooltip": "将伤害等额分配给所有的接收者，并召唤闪电，同时召唤陨石",
   "block.fabricmod.mirror": "镜子",
   "item.fabricmod.mirror": "镜子",
-  "block.fabricmod.mysterious_box": "神秘盒子"
+  "block.fabricmod.mysterious_box": "神秘盒子",
+  "screen.fabricmod.mysterious_box": "神秘盒子配置",
+  "screen.fabricmod.interval": "喷射间隔时间（秒）",
+  "screen.fabricmod.destroyable.true": "可破坏",
+  "screen.fabricmod.destroyable.false": "不可破坏"
 } 
