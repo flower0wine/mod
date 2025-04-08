@@ -17,7 +17,8 @@
 			"com.example.fabricmod.ExampleMod"
 		],
 		"client": [
-			"com.example.fabricmod.ExampleModClient"
+			"com.example.fabricmod.ExampleModClient",
+			"com.example.fabricmod.client.FreezeLookClient"
 		]
 	},
 	"mixins": [

@@ -1,13 +1,19 @@
 package com.example.fabricmod.networking;
 
 import com.example.fabricmod.block.MysteriousBoxBlock;
+import com.example.fabricmod.manager.FreezeLookManager;
 import com.example.fabricmod.player.PlayerHoldManager;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
 import com.example.fabricmod.ExampleMod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import com.example.fabricmod.networking.FreezeLookPackets;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModPackets {
     public static final Identifier MOUSE_HOLD_STATE = new Identifier(ExampleMod.MOD_ID, "mouse_hold_state");
@@ -46,5 +52,7 @@ public class ModPackets {
                 });
             }
         );
+
+        FreezeLookPackets.register();
     }
 } 

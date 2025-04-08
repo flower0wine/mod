@@ -11,7 +11,9 @@
     "SharpnessEnchantmentMixin",
     "VillagerBehaviorMixin",
     "EntityDeathMixin",
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "LivingEntityMixin",
+    "EntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import com.example.fabricmod.command.DropMultiplierCommand;
+import com.example.fabricmod.command.FreezeLookCommand;
 
 public class ExampleMod implements ModInitializer {
 
@@ -54,6 +55,7 @@ public class ExampleMod implements ModInitializer {
         // 注册命令
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             DropMultiplierCommand.register(dispatcher);
+            FreezeLookCommand.register(dispatcher);
         });
     }
 }
